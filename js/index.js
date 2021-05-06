@@ -40,3 +40,58 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+let nav = document.querySelectorAll('nav > a')
+let i =1; //setting our counteer to one instead of zero because object counting is different than an array :0
+nav.forEach(element => {
+  element.innerText = siteContent.nav[`nav-item-${i}`]
+  i++
+});
+
+let header = document.querySelector('.cta-text > h1')
+let headerButton = document.querySelector('.cta-text > button')
+header.innerText = "DOM \nIS\n AWESOME"
+headerButton.innerText = "Get Started";
+
+i = 0; //resetting our conter for the next loop below
+const sectionsArray = ['features','about','services','product', 'vision']
+
+//This is the loop for adding the titles to teh sections
+let textContentHeader = document.querySelectorAll('.text-content > h4')
+textContentHeader.forEach(element => {
+  console.log('this loop is runing')
+  // console.log(i, sectionsArray[i])
+  element.innerText = siteContent["main-content"][`${sectionsArray[i]}-h4`]
+  i++
+})
+
+i=0; //reset the counter again
+//this is the loop for adding the text content to the sections
+let textContent = document.querySelectorAll('.text-content > p')
+textContent.forEach(element => {
+  // console.log(i, sectionsArray[i])
+  element.innerText = siteContent["main-content"][`${sectionsArray[i]}-content`]
+  i++
+})
+
+//this is the code for the image in the center
+const centerImage = document.getElementById('middle-img')
+centerImage.setAttribute('src', siteContent["main-content"]['middle-img-src'])
+
+//contact content
+let contactTitle = document.querySelector('.contact > h4')
+contactTitle.innerText = siteContent.contact['contact-h4']
+
+//contact p's loop
+i=0;
+const contactArray = ['address','phone','email']
+let contactPs = document.querySelectorAll('.contact > p')
+contactPs.forEach(element => {
+  element.innerText = siteContent.contact[`${contactArray[i]}`]
+  i++
+})
+
+
+//footer content
+let footer = document.querySelector('footer > p')
+footer.innerText = siteContent.footer.copyright
